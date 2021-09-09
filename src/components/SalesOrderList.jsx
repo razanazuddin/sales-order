@@ -5,6 +5,7 @@ import SalesOrderListFilter from './SalesOrderListFilter.jsx';
 
 const SalesOrderList = () => {
   const [salesOrders, setSalesOrders] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -27,12 +28,24 @@ const SalesOrderList = () => {
 
   return (
     <div>
-      <SalesOrderListFilter />
       {loading ? (
           <div>Loading...</div>
         ) : (
-          <table className="table-auto w-full">
+          <table className="table-auto w-full my-4">
             <thead>
+              <tr>
+                <th colSpan="5" className="text-left">
+                  <h2>Sales Order</h2>
+                </th>
+                <th className="text-right">
+                  <button
+                    className="px-4 py-2 rounded-md font-semibold bg-blue-600 text-white focus:outline-black"
+                    onClick={() => setShowFilters(true)}
+                  >
+                    Filter list
+                  </button>
+                </th>
+              </tr>
               <tr>
                 <th className="py-4 px-6 border-b border-gray-300 text-left">Order number</th>
                 <th className="py-4 px-6 border-b border-gray-300 text-left">Customer's name</th>
@@ -57,6 +70,7 @@ const SalesOrderList = () => {
           </table>
         )
       }
+      <SalesOrderListFilter show={showFilters} onClose={() => setShowFilters(false)} />
     </div>
   );
 };
