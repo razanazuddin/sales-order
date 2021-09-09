@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import App from './src/App.js';
-import './assets/styles.scss';
+import './src/assets/styles.scss';
 
 const appRouting = (
   <Router>
